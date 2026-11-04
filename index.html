@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pocket Vid BD</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23ff2d78'/><path d='M38 28l36 22-36 22z' fill='white'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff1f2;--ink:#2a1a2e;--mut:#7a6a80;--card:#fff;--line:#f6d5dc;--g:linear-gradient(135deg,#ff2d78,#ff8a00)}
+*{box-sizing:border-box;margin:0}
+body{font-family:'Hind Siliguri',system-ui,sans-serif;background:var(--bg);color:var(--ink);padding:14px;max-width:1200px;margin:auto}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+.top{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:22px}
+.logo i{width:42px;height:42px;border-radius:12px;background:var(--g);display:grid;place-items:center;color:#fff;font-style:normal;font-size:16px}
+.logo b{background:var(--g);-webkit-background-clip:text;color:transparent}
+.search{flex:1;max-width:420px;min-width:200px;padding:12px 16px;border:1px solid var(--line);border-radius:14px;background:#fff;outline:0}
+.row{display:flex;gap:8px;overflow-x:auto;padding:12px 2px;scrollbar-width:none}
+.row::-webkit-scrollbar{display:none}
+.pill{flex:none;padding:8px 16px;border:1px solid var(--line);border-radius:99px;background:#fff;font-size:14px;white-space:nowrap}
+.pill.on{background:var(--c,var(--g));color:#fff;border-color:transparent;font-weight:700;box-shadow:0 4px 12px #0002}
+.cats .pill{font-size:13px;padding:6px 14px;background:#fff7f0}
+.cats .pill.on{background:#2a1a2e}
+.banner{margin:6px 0 10px;padding:22px;border-radius:22px;background:var(--g);color:#fff;display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap;text-align:center;font-weight:700;font-size:18px;box-shadow:0 10px 24px #ff2d7833}
+.banner a{background:#fff;color:#b0185e;padding:12px 22px;border-radius:99px;text-decoration:none;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:6px}
+.card{background:var(--card);border-radius:18px;overflow:hidden;border:1px solid var(--line);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 24px #ff2d7826}
+.th{aspect-ratio:16/9;background:#ffe0e8 center/cover;position:relative;display:grid;place-items:center}
+.th .pl{width:46px;height:46px;border-radius:50%;background:#fffd;display:grid;place-items:center;color:#ff2d78}
+.tag{position:absolute;top:8px;left:8px;padding:3px 10px;border-radius:99px;color:#fff;font-size:12px;background:var(--c)}
+.lk{position:absolute;top:8px;right:8px;background:#2a1a2ecc;color:#ffd24a;padding:3px 10px;border-radius:99px;font-size:12px}
+.fr{position:absolute;top:8px;right:8px;background:#16a34acc;color:#fff;padding:3px 10px;border-radius:99px;font-size:12px}
+.card h3{font-size:15px;padding:10px 12px 2px;font-weight:500}
+.card p{padding:0 12px 12px;font-size:12.5px;color:var(--mut)}
+.ad{grid-column:1/-1;display:flex;justify-content:center;overflow:hidden}
+.ad iframe{border:0;width:100%;max-width:728px}
+.empty{grid-column:1/-1;text-align:center;color:var(--mut);padding:40px}
+.modal{position:fixed;inset:0;background:#2a1a2ecc;display:none;place-items:center;padding:14px;z-index:50}
+.modal.on{display:grid}
+.box{background:#fff;border-radius:20px;width:100%;max-width:860px;max-height:94vh;overflow:auto;padding:16px}
+.box.s{max-width:360px;text-align:center}
+.vid{aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden}
+.vid iframe,.vid video{width:100%;height:100%;border:0}
+.x{float:right;border:0;background:#ffe0e8;border-radius:50%;width:34px;height:34px}
+.btn{border:0;background:var(--g);color:#fff;padding:11px 20px;border-radius:12px;font-weight:700}
+.btn.o{background:#fff;color:#b0185e;border:1px solid var(--line)}
+.btn.d{background:#e11d48}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;margin:4px 0 10px}
+label{font-size:13px;color:var(--mut)}
+.adm{background:#fff;border-radius:20px;padding:18px;margin-top:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.two{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr;gap:10px}.banner{font-size:15px}}
+.li{display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding:8px 0}
+.li span{flex:1;font-size:14px}
+.bar{height:8px;background:#ffe0e8;border-radius:9px;overflow:hidden;margin-bottom:10px}
+.bar i{display:block;height:100%;width:0;background:var(--g)}
+</style></head><body>
+<div id="pub">
+ <div class="top"><div class="logo"><i>▶</i><span>Pocket Vid <b>BD</b></span></div>
+ <input class="search" id="q" placeholder="ভিডিও খুঁজুন..."></div>
+ <div class="row" id="types"></div>
+ <div class="row cats" id="cats"></div>
+ <div class="banner"><span id="bt">🔥 বিশেষ অফার! প্রিমিয়াম ভিডিও কিনতে এখনই যোগাযোগ করুন</span><a id="wa" href="#" target="_blank">💬 WhatsApp</a></div>
+ <div class="row" id="acc"></div>
+ <div class="grid" id="grid"></div>
+</div>
+
+<div id="adm" style="display:none"></div>
+
+<div class="modal" id="pm"><div class="box"><button class="x" onclick="closeP()">✕</button><h3 id="pt" style="margin-bottom:10px;padding-right:40px"></h3><div class="vid" id="pv"></div><div class="ad" id="pad" style="margin-top:10px"></div></div></div>
+<div class="modal" id="km"><div class="box s"><h3>🔒 Premium ভিডিও</h3><p style="color:var(--mut);margin:8px 0">PIN দিয়ে আনলক করুন। PIN পেতে WhatsApp-এ যোগাযোগ করুন।</p><input id="kp" placeholder="PIN" inputmode="numeric" style="text-align:center"><div id="ke" style="color:#e11d48;font-size:13px;min-height:18px"></div><button class="btn" onclick="unlock()">আনলক</button> <button class="btn o" onclick="$('#km').classList.remove('on')">বাতিল</button></div></div>
+
+<script>
+const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const TYPES=[["english","🎬 English Movie","#6366f1,#8b5cf6"],["bangla","🎞️ Bangla Cinema","#059669,#14b8a6"],["tamil","🌴 Tamil Movie","#f59e0b,#ef4444"],["pakmovie","🌙 Pakistani Movie","#16a34a,#84cc16"],["natok","📺 Bangla Natok","#ec4899,#f43f5e"],["hindi","💞 Hindi Drama","#0ea5e9,#6366f1"],["pakdrama","🎭 Pakistani Drama","#a855f7,#ec4899"]];
+const CATS=["Romance","Emotional","Action","Comedy","Thriller","Horror","Family","Crime","Fantasy","Music"];
+const tc=k=>(TYPES.find(t=>t[0]==k)||[0,k,"#ff2d78,#ff8a00"]), grad=k=>`linear-gradient(135deg,${tc(k)[2]})`;
+let S={vids:[],set:{},type:'all',cat:'all',acc:'all',q:''}, cur=null, ADM=sessionStorage.adm||'';
+const api=(a,body,h={})=>fetch('/.netlify/functions/api?a='+a,{method:body?'POST':'GET',headers:{'content-type':'application/json',...h},body:body?JSON.stringify(body):undefined}).then(r=>r.json());
+const ytId=u=>(u.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/)||[])[1];
+const gdId=u=>(u.match(/\/d\/([\w-]+)/)||u.match(/[?&]id=([\w-]+)/)||[])[1];
+function thumb(v){if(v.thumb)return v.thumb;if(v.source=='youtube'){let i=ytId(v.url||v.ref||'');return i?`https://img.youtube.com/vi/${i}/hqdefault.jpg`:''}
+ if(v.source=='drive'&&v.did)return `https://drive.google.com/thumbnail?id=${v.did}&sz=w480`;
+ if(v.source=='cloud'&&v.url)return v.url.replace('/upload/','/upload/so_2,w_480/').replace(/\.\w+$/,'.jpg');return ''}
+function ad(el,code,h){if(!code){el.style.display='none';return}el.style.display='flex';el.innerHTML=`<iframe height="${h||100}" srcdoc="${esc('<body style=margin:0;display:flex;justify-content:center>'+code)}"></iframe>`}
+function chips(el,list,key,all){el.innerHTML=[['all',all,'']].concat(list).map(([k,l,c])=>`<button class="pill ${S[key]==k?'on':''}" style="${c?'--c:linear-gradient(135deg,'+c+')':''}" onclick="S.${key}='${k}';render()">${l}</button>`).join('')}
+function render(){
+ chips($('#types'),TYPES,'type','🏠 Home'); chips($('#cats'),CATS.map(c=>[c,c,'']),'cat','All Genres');
+ $('#acc').innerHTML=[['all','সব'],['free','✅ Free'],['premium','🔒 Premium']].map(([k,l])=>`<button class="pill ${S.acc==k?'on':''}" onclick="S.acc='${k}';render()">${l}</button>`).join('');
+ const q=S.q.toLowerCase(), L=S.vids.filter(v=>(S.type=='all'||v.type==S.type)&&(S.cat=='all'||v.category==S.cat)&&(S.acc=='all'||v.access==S.acc)&&(!q||v.title.toLowerCase().includes(q)));
+ let h='';L.forEach((v,i)=>{if(i&&i%8==0&&S.set.adBanner)h+='<div class="ad ig"></div>';
+  h+=`<div class="card" onclick="play('${v.id}')"><div class="th" style="background-image:url('${esc(thumb(v))}');--c:${grad(v.type)}"><span class="tag">${tc(v.type)[1]}</span>${v.access=='premium'?'<span class="lk">🔒 Premium</span>':'<span class="fr">Free</span>'}<span class="pl">▶</span></div><h3>${esc(v.title)}</h3><p>${esc(v.category)}</p></div>`});
+ $('#grid').innerHTML=h||'<div class="empty">কোনো ভিডিও পাওয়া যায়নি।</div>';
+ document.querySelectorAll('.ig').forEach(e=>ad(e,S.set.adBanner,S.set.adH));
+}
+function setup(){const s=S.set;$('#wa').href='https://wa.me/'+(s.whatsapp||'').replace(/\D/g,'');if(s.bannerText)$('#bt').textContent=s.bannerText;
+ if(s.adGlobal&&!window._g){window._g=1;const r=document.createRange().createContextualFragment(s.adGlobal);document.body.appendChild(r)}}
+function embed(v,url){const el=$('#pv');
+ if(v.source=='youtube'){el.innerHTML=`<iframe src="https://www.youtube.com/embed/${ytId(url)}?autoplay=1" allow="autoplay;fullscreen" allowfullscreen></iframe>`}
+ else if(v.source=='drive'){el.innerHTML=`<iframe src="https://drive.google.com/file/d/${gdId(url)}/preview" allow="autoplay;fullscreen" allowfullscreen></iframe>`}
+ else el.innerHTML=`<video src="${esc(url)}" controls autoplay playsinline controlsList="nodownload"></video>`;
+ $('#pt').textContent=v.title;ad($('#pad'),S.set.adBanner,S.set.adH);$('#pm').classList.add('on')}
+function closeP(){$('#pv').innerHTML='';$('#pm').classList.remove('on')}
+async function play(id){cur=S.vids.find(v=>v.id==id);if(cur.access!='premium')return embed(cur,cur.url);
+ if(localStorage.pvpin){const r=await api('unlock',{id,pin:localStorage.pvpin});if(r.url)return embed(cur,r.url)}
+ $('#ke').textContent='';$('#kp').value='';$('#km').classList.add('on')}
+async function unlock(){const p=$('#kp').value.trim(),r=await api('unlock',{id:cur.id,pin:p});
+ if(r.url){localStorage.pvpin=p;$('#km').classList.remove('on');embed(cur,r.url)}else $('#ke').textContent='ভুল PIN! আবার চেষ্টা করুন।'}
+$('#q').oninput=e=>{S.q=e.target.value;render()};
+
+/* ---------- ADMIN ---------- */
+let AV=[],AS={};
+const H=()=>({'x-admin':ADM});
+function route(){const a=location.hash=='#admin';$('#pub').style.display=a?'none':'';$('#adm').style.display=a?'':'none';if(a)adminInit()}
+async function adminInit(){
+ if(ADM){const r=await api('admin',null,H());if(!r.error){AV=r.vids;AS=r.set;return panel()}}
+ $('#adm').innerHTML=`<div class="adm" style="max-width:360px;margin:60px auto;text-align:center"><h2>🔐 Admin Login</h2><br><input id="ap" type="password" placeholder="Admin PIN / Password"><div id="ae" style="color:#e11d48"></div><button class="btn" onclick="login()">Login</button></div>`}
+async function login(){ADM=$('#ap').value;const r=await api('login',{},H());if(r.ok){sessionStorage.adm=ADM;adminInit()}else $('#ae').textContent='ভুল PIN'}
+function panel(){
+ $('#adm').innerHTML=`<div class="top"><div class="logo"><i>⚙</i>Admin Panel</div><div><a class="btn o" href="#" onclick="location.hash='';location.reload();return false" style="text-decoration:none;display:inline-block">সাইট দেখুন</a> <button class="btn o" onclick="sessionStorage.clear();location.reload()">Logout</button></div></div>
+ <div class="adm"><h3>➕ নতুন ভিডিও</h3><br>
+ <label>Title</label><input id="vt">
+ <div class="two"><div><label>Type</label><select id="vy">${TYPES.map(t=>`<option value="${t[0]}">${t[1]}</option>`)}</select></div>
+ <div><label>Category</label><select id="vc">${CATS.map(c=>`<option>${c}</option>`)}</select></div>
+ <div><label>Access</label><select id="va"><option value="free">✅ Free</option><option value="premium">🔒 Premium</option></select></div>
+ <div><label>Source</label><select id="vs" onchange="srcUi()"><option value="youtube">YouTube link</option><option value="drive">Google Drive link</option><option value="url">Direct video URL (.mp4)</option><option value="cloud">Computer থেকে Upload</option></select></div></div>
+ <div id="su"></div><label>Thumbnail URL (ঐচ্ছিক)</label><input id="vh" placeholder="খালি রাখলে auto হবে">
+ <div class="bar" id="pb" style="display:none"><i></i></div><button class="btn" id="sv" onclick="addVid()">Publish</button> <span id="vm"></span></div>
+ <div class="adm"><h3>🎬 ভিডিও তালিকা (${AV.length})</h3><div>${AV.map(v=>`<div class="li"><span>${esc(v.title)} <small style="color:var(--mut)">• ${tc(v.type)[1]} • ${v.access}</small></span><button class="btn o" onclick="tog('${v.id}')">${v.access=='free'?'→ Premium':'→ Free'}</button><button class="btn d" onclick="del('${v.id}')">✕</button></div>`).join('')||'<p>এখনো কোনো ভিডিও নেই</p>'}</div></div>
+ <div class="adm"><h3>⚙ Settings</h3><br>
+ <div class="two"><div><label>WhatsApp নম্বর (কান্ট্রি কোডসহ, যেমন 8801XXXXXXXXX)</label><input id="s1" value="${esc(AS.whatsapp)}"></div>
+ <div><label>Premium unlock PIN (ভিউয়ারদের জন্য)</label><input id="s2" value="${esc(AS.premiumPin)}"></div></div>
+ <label>ব্যানার টেক্সট</label><input id="s3" value="${esc(AS.bannerText)}">
+ <div class="two"><div><label>Cloudinary Cloud name</label><input id="s4" value="${esc(AS.cloudName)}"></div><div><label>Cloudinary Unsigned preset</label><input id="s5" value="${esc(AS.preset)}"></div></div>
+ <label>Adsterra Banner code (পুরো script পেস্ট করুন)</label><textarea id="s6" rows="4">${esc(AS.adBanner)}</textarea>
+ <label>Banner Ad height (px) — যেমন 90 বা 250</label><input id="s7" value="${esc(AS.adH||90)}">
+ <label>Adsterra Social Bar / Popunder code (সব পেজে চলবে)</label><textarea id="s8" rows="3">${esc(AS.adGlobal)}</textarea>
+ <button class="btn" onclick="saveSet()">Save Settings</button> <span id="sm"></span></div>`;srcUi()}
+function srcUi(){const s=$('#vs').value;$('#su').innerHTML=s=='cloud'?`<label>Video ফাইল (Cloudinary সেটিংস আগে দিন; Free plan-এ সর্বোচ্চ ~100MB)</label><input type="file" id="vf" accept="video/*">`:`<label>${s=='youtube'?'YouTube':s=='drive'?'Google Drive (Share: Anyone with link)':'Video'} URL</label><input id="vu" placeholder="https://...">`}
+const save=()=>api('save',{vids:AV,set:AS},H());
+function upload(f){return new Promise((ok,no)=>{if(!AS.cloudName||!AS.preset)return no('আগে Settings-এ Cloudinary দিন');
+ const fd=new FormData();fd.append('file',f);fd.append('upload_preset',AS.preset);const x=new XMLHttpRequest();
+ x.open('POST',`https://api.cloudinary.com/v1_1/${AS.cloudName}/video/upload`);$('#pb').style.display='block';
+ x.upload.onprogress=e=>$('#pb i').style.width=(e.loaded/e.total*100)+'%';
+ x.onload=()=>{try{const r=JSON.parse(x.responseText);r.secure_url?ok(r.secure_url):no(r.error?.message||'Upload failed')}catch{no('Upload failed')}};x.onerror=()=>no('Network error');x.send(fd)})}
+async function addVid(){const m=$('#vm'),b=$('#sv'),t=$('#vt').value.trim(),s=$('#vs').value;if(!t)return m.textContent='Title দিন';
+ b.disabled=true;m.textContent='অপেক্ষা করুন...';let url='';
+ try{url=s=='cloud'?await upload($('#vf').files[0]):$('#vu').value.trim();if(!url)throw'URL/ফাইল দিন';
+  if(s=='youtube'&&!ytId(url))throw'YouTube লিংক ঠিক নয়';if(s=='drive'&&!gdId(url))throw'Drive লিংক ঠিক নয়'}catch(e){b.disabled=false;return m.textContent='⚠ '+e}
+ AV.unshift({id:Date.now().toString(36),title:t,type:$('#vy').value,category:$('#vc').value,access:$('#va').value,source:s,url,did:s=='drive'?gdId(url):'',thumb:$('#vh').value.trim(),created:Date.now()});
+ await save();panel();$('#vm').textContent='✅ Published!'}
+async function tog(id){const v=AV.find(x=>x.id==id);v.access=v.access=='free'?'premium':'free';await save();panel()}
+async function del(id){if(!confirm('ডিলিট করবেন?'))return;AV=AV.filter(x=>x.id!=id);await save();panel()}
+async function saveSet(){const g=i=>$('#'+i).value.trim();Object.assign(AS,{whatsapp:g('s1'),premiumPin:g('s2'),bannerText:g('s3'),cloudName:g('s4'),preset:g('s5'),adBanner:$('#s6').value.trim(),adH:g('s7'),adGlobal:$('#s8').value.trim()});
+ await save();$('#sm').textContent='✅ Saved'}
+
+addEventListener('hashchange',route);
+(async()=>{try{const r=await api('list');S.vids=r.vids||[];S.set=r.set||{}}catch{}setup();render();route();ad($('#pad'),'');})();
+</script></body></html>
